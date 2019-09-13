@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,7 +11,7 @@ class MainController
     /**
      * @Route("/", name="main")
      */
-    public function __invoke(ParameterBagInterface $parameters)
+    public function __invoke(ContainerBagInterface $parameters)
     {
         return new Response('Password: "'.$parameters->get('password').'"');
     }
