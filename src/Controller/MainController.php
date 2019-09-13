@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
-use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController
 {
     /**
      * @Route("/", name="main")
+     * @Template("main/index.html.twig")
      */
-    public function __invoke(ContainerBagInterface $parameters)
+    public function __invoke(string $password): array
     {
-        return new Response('Password: "'.$parameters->get('password').'"');
+        return compact('password');
     }
 }
